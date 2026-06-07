@@ -55,7 +55,7 @@ export default function Gatekeeper({ onUnlock }) {
               {/* Header Decorative Elements */}
               <div className="flex flex-wrap gap-2 justify-center mb-4">
                 <QuotePill text="My forever person." index={0} size="sm" />
-                <QuotePill text="Still choosing you." index={2} size="sm" />
+                <QuotePill text="My favorite Decision." index={2} size="sm" />
               </div>
 
               {/* Dynamic Step Window */}

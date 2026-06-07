@@ -4,19 +4,26 @@ import HeartBurst from './HeartBurst'
 import QuotePill from './QuotePill'
 
 export default function Gatekeeper({ onUnlock }) {
-  const [noPos, setNoPos] = useState({ x: 50, y: 72 })
-  const [noHidden, setNoHidden] = useState(false)
+  // Steps: 1 = "How much do you love me?", 2 = "How much do you think I love you?", 3 = Sweet Correction Plot Twist
+  const [step, setStep] = useState(1)
+  const [loveVal1, setLoveVal1] = useState(50)
+  const [loveVal2, setLoveVal2] = useState(50)
+  
   const [bursting, setBursting] = useState(false)
   const [peeling, setPeeling] = useState(false)
 
-  const dartNoButton = useCallback(() => {
-    setNoPos({
-      x: 8 + Math.random() * 72,
-      y: 35 + Math.random() * 45,
-    })
-  }, [])
+  // Dynamic feedback sentences for her slider responses
+  const getFeedbackMessage = (val) => {
+    if (val === 0) return "Wait... zero?! 🥺"
+    if (val < 30) return "Hmm, suspicious...😏"
+    if (val < 60) return "You are soo sweet! Thanks for that ❤️"
+    if (val < 85) return "Wow, that's incredibly sweet! 🥰"
+    if (val < 100) return "Almost off the charts! 💖"
+    return "That's why you are my Princess ✨"
+  }
 
-  const handleYes = () => {
+  // Initiates the original heart burst and page peel transition to unlock the app
+  const handleFinalUnlock = () => {
     setBursting(true)
     setTimeout(() => {
       setPeeling(true)
@@ -43,51 +50,127 @@ export default function Gatekeeper({ onUnlock }) {
           <HeartBurst active={bursting} />
 
           <div className="relative w-full max-w-xs">
-            <div className="bg-white/80 backdrop-blur-sm rounded-[10px] shadow-[0_8px_30px_rgba(244,114,182,0.2)] p-8 text-center border border-rose-200/50">
-              <div className="flex flex-wrap gap-2 justify-center mb-6">
+            <div className="bg-white/80 backdrop-blur-sm rounded-[10px] shadow-[0_8px_30px_rgba(244,114,182,0.2)] p-8 text-center border border-rose-200/50 min-h-[380px] flex flex-col justify-between">
+              
+              {/* Header Decorative Elements */}
+              <div className="flex flex-wrap gap-2 justify-center mb-4">
                 <QuotePill text="My forever person." index={0} size="sm" />
                 <QuotePill text="Still choosing you." index={2} size="sm" />
               </div>
 
-              <p className="font-script text-vintage-brown text-4xl leading-tight mb-2">
-                Do you love me?
-              </p>
-              <p className="font-handwritten text-vintage-brown/80 text-base leading-relaxed mb-8">
-                There is only one real answer.
-              </p>
-
-              <div className="relative h-44">
-                <motion.button
-                  type="button"
-                  onClick={handleYes}
-                  className="w-full py-4 rounded-[8px] text-white font-body font-semibold text-lg shadow-[0_6px_20px_rgba(244,114,182,0.5)] active:scale-95 transition-transform bg-gradient-to-r from-rose-500 to-pink-600"
-                  whileTap={{ scale: 0.95 }}
-                >
-                  YES
-                </motion.button>
-
-                <AnimatePresence>
-                  {!noHidden && (
-                    <motion.button
-                      type="button"
-                      className="absolute py-2.5 px-6 rounded-[8px] border-2 border-violet-300/50 text-violet-600 font-body text-sm bg-white/90 shadow-sm"
-                      style={{
-                        left: `${noPos.x}%`,
-                        top: `${noPos.y}%`,
-                        transform: 'translate(-50%, -50%)',
-                      }}
-                      onMouseEnter={dartNoButton}
-                      onPointerEnter={dartNoButton}
-                      onTouchStart={dartNoButton}
-                      onClick={() => setNoHidden(true)}
-                      exit={{ opacity: 0, scale: 0.6, rotate: -10 }}
-                      transition={{ duration: 0.18 }}
+              {/* Dynamic Step Window */}
+              <div className="flex-1 flex flex-col justify-center my-4">
+                <AnimatePresence mode="wait">
+                  {step === 1 && (
+                    <motion.div
+                      key="gate-step1"
+                      initial={{ opacity: 0, x: 20 }}
+                      animate={{ opacity: 1, x: 0 }}
+                      exit={{ opacity: 0, x: -20 }}
+                      transition={{ duration: 0.2 }}
+                      className="flex flex-col items-center w-full"
                     >
-                      NO
-                    </motion.button>
+                      <p className="font-script text-vintage-brown text-4xl leading-tight mb-2">
+                        How much do you love me?
+                      </p>
+                      <p className="font-handwritten text-vintage-brown/60 text-sm mb-6">
+                        Be honest! Slider answers only.
+                      </p>
+                      
+                      <input
+                        type="range"
+                        min="0"
+                        max="100"
+                        value={loveVal1}
+                        onChange={(e) => setLoveVal1(Number(e.target.value))}
+                        className="w-full accent-rose-500 cursor-pointer h-2 bg-rose-100 rounded-lg appearance-none mb-4"
+                      />
+                      
+                      <p className="font-handwritten text-base text-rose-600 font-semibold h-6 mb-6">
+                        {getFeedbackMessage(loveVal1)}
+                      </p>
+
+                      <motion.button
+                        type="button"
+                        onClick={() => setStep(2)}
+                        className="w-full py-3 rounded-[8px] text-white font-body font-semibold text-base shadow-md bg-gradient-to-r from-rose-500 to-pink-600 active:scale-95 transition-transform"
+                        whileTap={{ scale: 0.95 }}
+                      >
+                        Next question →
+                      </motion.button>
+                    </motion.div>
+                  )}
+
+                  {step === 2 && (
+                    <motion.div
+                      key="gate-step2"
+                      initial={{ opacity: 0, x: 20 }}
+                      animate={{ opacity: 1, x: 0 }}
+                      exit={{ opacity: 0, x: -20 }}
+                      transition={{ duration: 0.2 }}
+                      className="flex flex-col items-center w-full"
+                    >
+                      <p className="font-script text-vintage-brown text-3xl leading-tight mb-2">
+                        How much do you think I love you?
+                      </p>
+                      <p className="font-handwritten text-vintage-brown/60 text-sm mb-6">
+                        Take a wild guess...
+                      </p>
+
+                      <input
+                        type="range"
+                        min="0"
+                        max="100"
+                        value={loveVal2}
+                        onChange={(e) => setLoveVal2(Number(e.target.value))}
+                        className="w-full accent-violet-500 cursor-pointer h-2 bg-violet-100 rounded-lg appearance-none mb-4"
+                      />
+
+                      <p className="font-handwritten text-lg text-violet-600 font-bold h-6 mb-6">
+                        {loveVal2}%
+                      </p>
+
+                      <motion.button
+                        type="button"
+                        onClick={() => setStep(3)}
+                        className="w-full py-3 rounded-[8px] text-white font-body font-semibold text-base shadow-md bg-gradient-to-r from-violet-500 to-indigo-600 active:scale-95 transition-transform"
+                        whileTap={{ scale: 0.95 }}
+                      >
+                        Submit Answer 🔒
+                      </motion.button>
+                    </motion.div>
+                  )}
+
+                  {step === 3 && (
+                    <motion.div
+                      key="gate-step3"
+                      initial={{ opacity: 0, scale: 0.92 }}
+                      animate={{ opacity: 1, scale: 1 }}
+                      transition={{ type: 'spring', stiffness: 300, damping: 25 }}
+                      className="flex flex-col items-center w-full text-center"
+                    >
+                      <p className="font-handwritten text-xl text-rose-600 font-bold leading-snug mb-3 animate-pulse">
+                        Nope, incorrect! 🤭
+                      </p>
+                      <p className="font-script text-vintage-brown text-3xl leading-snug mb-8">
+                        I love you way more—to the moon and back! 🌙✨
+                      </p>
+
+                      <motion.button
+                        type="button"
+                        onClick={handleFinalUnlock}
+                        className="w-full py-4 rounded-[8px] text-white font-body font-bold text-lg shadow-[0_6px_20px_rgba(244,114,182,0.5)] bg-gradient-to-r from-rose-500 to-pink-600"
+                        animate={{ scale: [1, 1.03, 1] }}
+                        transition={{ repeat: Infinity, duration: 1.5 }}
+                        whileTap={{ scale: 0.95 }}
+                      >
+                        Enter Our Story Book 💖
+                      </motion.button>
+                    </motion.div>
                   )}
                 </AnimatePresence>
               </div>
+
             </div>
           </div>
         </motion.div>

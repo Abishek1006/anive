@@ -1,6 +1,6 @@
 export const mainQuotes = {
   cover:
-    'Every version of us, every laugh, every fight, every "I miss you", every moment that became home.',
+    'Every voice note, every inside joke, every time you made ordinary feel like magic.',
   memorySounds: 'This is how our memory sounds.',
   littleThings:
     'Some memories lived quietly in hand holds, inside jokes, and moments where words were unnecessary.',
@@ -16,7 +16,7 @@ export const romanticQuotes = [
   'My safest home.',
   'The one I prayed for.',
   'My pretty girl.',
-  'You feel like home.',
+  'My home.',
   'My forever person.',
   'Still choosing you.',
   'My best decision.',
@@ -90,11 +90,12 @@ export const fillerQuotes = [...romanticQuotes, ...tinyNotes, ...funnyNotes]
 
 export const quotesByPage = {
   cover: [
-    'Every version of you.',
-    'You feel like home.',
-    'My forever person.',
-    'The best chapter of my life.',
-    'Still choosing you.',
+    'My life',
+    'My favorite plot twist',
+    'My princess',
+    'My home',
+    'My favourite kind of chaos',
+    "Endlessly, it's you"
   ],
   'memory-sounds': [
     'My favorite notification.',
@@ -150,7 +151,7 @@ export const notesByPage = {
     'us, always',
     'tiny scrapbook',
     'made for you',
-    'one year of us',
+    'three year of us',
     'every page is yours',
   ],
   'memory-sounds': [

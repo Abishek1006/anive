@@ -22,10 +22,10 @@ export default function CoverPage() {
         transition={{ duration: 0.45 }}
       >
         <p className="font-handwritten text-vintage-brown text-base -rotate-2">
-          made with every tiny memory I kept
+          made with tiny memory I kept
         </p>
         <h1 className="font-script text-[3rem] text-[#7B5E57] leading-none mt-1">
-          A Thousand Memories
+          All The In-Betweens
         </h1>
       </motion.div>
 
@@ -43,7 +43,7 @@ export default function CoverPage() {
             loading="eager"
           />
           <p className="absolute bottom-4 left-4 right-4 font-handwritten text-vintage-brown text-lg text-center">
-            my favorite chapter
+            Favorite chapter of my life.
           </p>
         </motion.div>
 

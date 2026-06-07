@@ -1,0 +1,159 @@
+@import "tailwindcss";
+
+@theme {
+  --color-cream: #fff8f0;
+  --color-warm-pink: #f8d7da;
+  --color-rose-soft: #efb4c0;
+  --color-sky-soft: #bfdfff;
+  --color-light-blue: #d9eeff;
+  --color-lavender: #dcccfd;
+  --color-purple-mist: #e9e1ff;
+  --color-beige: #e8d8c4;
+  --color-soft-red: #c86a6a;
+  --color-vintage-brown: #7b5e57;
+  --font-script: "Great Vibes", "Allura", cursive;
+  --font-handwritten: "Caveat", cursive;
+  --font-body: "Poppins", sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+  -webkit-tap-highlight-color: transparent;
+}
+
+html {
+  scroll-behavior: auto;
+  overflow: hidden;
+}
+
+body {
+  margin: 0;
+  font-family: var(--font-body);
+  overflow: hidden;
+  background: #1a0f18;
+  color: #7b5e57;
+}
+
+#root {
+  width: 100%;
+  min-height: 100svh;
+}
+
+.font-script {
+  font-family: var(--font-script);
+}
+
+.font-handwritten {
+  font-family: var(--font-handwritten);
+}
+
+.font-body {
+  font-family: var(--font-body);
+}
+
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.3; }
+}
+
+@keyframes bounce-soft {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-6px); }
+}
+
+@keyframes spin-slow {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+@keyframes petal-fall {
+  0% { transform: translateY(-5vh) translateX(0) rotate(0deg); opacity: 0; }
+  10% { opacity: 0.8; }
+  100% { transform: translateY(105vh) translateX(30px) rotate(180deg); opacity: 0; }
+}
+
+.animate-blink {
+  animation: blink 1.5s ease-in-out infinite;
+}
+
+.animate-bounce-soft {
+  animation: bounce-soft 2s ease-in-out infinite;
+}
+
+.animate-spin-slow {
+  animation: spin-slow 4s linear infinite;
+}
+
+.notebook-grid {
+  background-image: radial-gradient(circle, #c86a6a28 1px, transparent 1px);
+  background-size: 18px 18px;
+}
+
+.scrapbook-page {
+  isolation: isolate;
+}
+
+.paper-speckles {
+  background-image:
+    radial-gradient(circle at 12% 15%, rgba(123, 94, 87, 0.12) 0 1px, transparent 1.5px),
+    radial-gradient(circle at 78% 30%, rgba(200, 106, 106, 0.1) 0 1px, transparent 1.5px),
+    radial-gradient(circle at 44% 68%, rgba(123, 94, 87, 0.08) 0 1px, transparent 1.5px),
+    radial-gradient(circle at 88% 82%, rgba(191, 223, 255, 0.18) 0 1px, transparent 1.5px);
+  background-size: 52px 52px, 68px 68px, 74px 74px, 58px 58px;
+}
+
+.taped-card::before,
+.taped-card::after {
+  content: "";
+  position: absolute;
+  height: 18px;
+  width: 58px;
+  background: rgba(255, 248, 240, 0.76);
+  border: 1px dashed rgba(123, 94, 87, 0.25);
+  top: -9px;
+  z-index: 3;
+}
+
+.taped-card::before {
+  left: 18px;
+  rotate: -8deg;
+}
+
+.taped-card::after {
+  right: 18px;
+  rotate: 8deg;
+}
+
+.stitched-border {
+  border: 1px dashed rgba(123, 94, 87, 0.35);
+}
+
+.crumbled-paper {
+  background-color: #fff8f0;
+  background-image:
+    radial-gradient(ellipse at 20% 30%, rgba(123, 94, 87, 0.06) 0%, transparent 50%),
+    radial-gradient(ellipse at 80% 70%, rgba(123, 94, 87, 0.08) 0%, transparent 50%);
+}
+
+.parchment-lines {
+  background-color: #fff8f0;
+  background-image: repeating-linear-gradient(
+    transparent,
+    transparent 27px,
+    #e8d8c4 27px,
+    #e8d8c4 28px
+  );
+}
+
+.moody-vignette {
+  background: radial-gradient(ellipse at center, #2a1f1d 0%, #1a1210 60%, #0d0908 100%);
+}

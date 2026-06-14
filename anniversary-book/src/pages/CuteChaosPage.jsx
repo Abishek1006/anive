@@ -54,7 +54,7 @@ export default function CuteChaosPage() {
               {/* USER_PHOTO: {photo.tag} */}
               <img src={photo.src} alt={photo.alt} className="w-full aspect-square object-cover" loading="lazy" />
               <p className="mt-1 text-center font-handwritten text-sm text-[#5F4B7A]">
-                {['tiny drama', 'laugh here', 'still weird'][i]}
+                {['laugh', 'weird romance', 'cute vibe'][i]}
               </p>
             </div>
           </motion.div>

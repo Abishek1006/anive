@@ -1,7 +1,7 @@
 import memoryPhoto from './Snapchat-696134462.jpg'
 import bustheme from './bustheme.jpg'
 import facecovered from './her face covered.jpg'
-import glassfilter from './glassfilter.jpg'
+import glassfilter from './glassFilter.jpg'
 import sleepkiss from './sleepkiss.jpg'
 import vibefilter from './vibe.jpg'
 import oldbus from './oldbus.jpeg'

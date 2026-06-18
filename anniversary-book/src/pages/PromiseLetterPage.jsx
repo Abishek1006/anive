@@ -40,19 +40,19 @@ export default function PromiseLetterPage() {
         </div>
 
         <div className="pr-16 font-handwritten text-[15px] leading-7 text-vintage-brown">
-          <p className="mb-2.5">Dear Love,</p>
-          <p className="mb-2.5">{mainQuotes.promise}</p>
+          <p className="mb-2.5">Dear Daling,</p>
           <p className="mb-2.5">
-            I promise to hold your hand when the world feels heavy, to laugh with you when
-            nothing makes sense, and to keep choosing you in the quiet ordinary days too.
-          </p>
-          <p className="mb-2.5">
-            You are my safe place, my favorite story, and the soft answer to every prayer
-            I whispered before I even knew your name.
+           I promise to hold your hand when the world feels heavy on the quiet, ordinary days.
+            My heart exists more to love you than to keep me alive.
+You are beautiful—anyone can see that. But what I see in you goes far beyond & forgotten.
+.I'll never ask you to shrink yourself to fit or to satisfy my expectations.
+You're not loved because you prove your worth to me.You're not prioritized because you earn it.
+You're chosen.
+Chosen exactly as you are for your imperfections, your fears, and every things that makes you, you.
           </p>
           <p>
             Yours forever,<br />
-            <span className="text-xl text-[#7B4450]">[Name]</span>
+            <span className="text-xl text-[#7B4450]">Abishek</span>
           </p>
         </div>
 
